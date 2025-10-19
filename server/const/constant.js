@@ -7,5 +7,5 @@ const PORT = process.env.PORT;
 module.exports = {
     SERVER,
     HOSTNAME,
-    PORT
+    PORT,
 }
