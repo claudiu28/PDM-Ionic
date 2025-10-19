@@ -87,11 +87,8 @@ const seed = async () => {
     console.log("Seed finished successfully!");
 };
 
-seed()
-    .catch((err) => {
+seed().catch((err) => {
         console.error("Error while seeding:", err);
         process.exit(1);
-    })
-    .finally(async () => {
-        await prismaClient.$disconnect();
-    });
+    }).finally(async () => {
+        await prismaClient.$disconnect(); });

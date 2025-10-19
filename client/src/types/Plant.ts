@@ -9,8 +9,6 @@ export interface Plant {
   nextWatering?: string;
 }
 
-export type CreatePlantDto = Omit<Plant, 'id' | 'createdAt' | 'nextWatering'>;
-
 export interface UpdatePlantDto {
   name?: string;
   description?: string;
@@ -18,3 +16,6 @@ export interface UpdatePlantDto {
   isRare?: boolean;
   lastWatered?: string;
 }
+
+// plant minus id, createdAt and nextWatering
+export type CreatePlantDto = Omit<Plant, 'id' | 'createdAt' | 'nextWatering'>;

@@ -11,15 +11,15 @@ class SocketService {
       });
 
       this.socket.on('connect', () => {
-        console.log('[SocketService] Connected with ID:', this.socket?.id);
+        console.log('SocketService::Connected with ID:', this.socket?.id);
       });
 
       this.socket.on('disconnect', () => {
-        console.log('[SocketService] Disconnected');
+        console.log('SocketService::Disconnected');
       });
 
       this.socket.on('connect_error', (error) => {
-        console.error('[SocketService] Connection error:', error);
+        console.error('SocketService::Connection error:', error);
       });
     }
   }
@@ -28,7 +28,7 @@ class SocketService {
     if (this.socket) {
       this.socket.disconnect();
       this.socket = null;
-      console.log('[SocketService] Manually disconnected');
+      console.log('SocketService::Manually disconnected');
     }
   }
 

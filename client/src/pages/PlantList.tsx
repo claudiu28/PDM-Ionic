@@ -107,16 +107,9 @@ const PlantList: React.FC = () => {
         const target = e.target as HTMLInputElement | HTMLTextAreaElement;
         const name = target.name;
         const value =
-            target.type === 'checkbox'
-                ? (target as HTMLInputElement).checked
-                : target.type === 'number'
-                    ? Number(target.value)
-                    : target.value;
-
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
+            target.type === 'checkbox' ? (target as HTMLInputElement).checked
+                : target.type === 'number' ? Number(target.value) : target.value;
+        setFormData((prev) => ({...prev, [name]: value,}));
     };
 
     const handleCreate = async () => {
@@ -191,7 +184,7 @@ const PlantList: React.FC = () => {
                         {plants.length === 0 ? (
                             <div className="empty-state">
                                 <h2>No plants yet</h2>
-                                <p>Add your first plant to get started!</p>
+                                <p>Add your first plant to get started</p>
                             </div>
                         ) : (
                             plants.map((plant) => {
@@ -278,7 +271,8 @@ const PlantList: React.FC = () => {
                             <IonCheckbox
                                 name="isRare"
                                 checked={formData.isRare}
-                                onIonChange={(e) => setFormData((prev) => ({ ...prev, isRare: e.detail.checked }))}
+                                onIonChange={(e) =>
+                                    setFormData((prev) => ({ ...prev, isRare: e.detail.checked }))}
                             />
                         </IonItem>
                         <IonInput
