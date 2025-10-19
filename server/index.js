@@ -3,7 +3,9 @@ const express = require('express');
 const constants = require('./const/constant');
 const cors = require('cors');
 const { Server } = require('socket.io');
-const routes = require('./routes/PlantsRoutes');
+const routesPlants = require('./routes/PlantsRoutes');
+const routesAuth = require('./routes/UserRoutes');
+const {auth} = require("./middleware/auth");
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -30,7 +32,8 @@ app.get('/', (req, res) => {
     res.json({ message: 'Plant Care API is running' });
 });
 
-app.use("/api/plants", routes);
+app.use("/api/auth", routesAuth);
+app.use("/api/plants", auth, routesPlants);
 
 server.listen(constants.PORT, constants.HOSTNAME, () => {
     console.log(`Server running at ${constants.SERVER}${constants.HOSTNAME}:${constants.PORT}/`);

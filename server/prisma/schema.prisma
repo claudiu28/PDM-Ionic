@@ -8,6 +8,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  plants    Plant[]
+}
+
 model Plant {
   id               Int      @id @default(autoincrement())
   name             String
@@ -16,4 +25,7 @@ model Plant {
   isRare           Boolean  @default(false)
   lastWatered      DateTime @default(now())
   createdAt        DateTime @default(now())
+  ownerId          Int
+  owner            User     @relation(fields: [ownerId], references: [id])
+  synced           Boolean  @default(true)
 }

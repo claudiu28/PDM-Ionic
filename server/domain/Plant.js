@@ -1,5 +1,5 @@
 class Plant {
-    constructor({id, name, lastWatered, wateringInterval,description, isRare, createdAt}) {
+    constructor({id, name, lastWatered, wateringInterval, description, isRare, synced, owner, createdAt}) {
         this.id = id;
         this.name = name;
         this.lastWatered = lastWatered;
@@ -7,6 +7,8 @@ class Plant {
         this.description = description;
         this.isRare = isRare;
         this.createdAt = createdAt;
+        this.synced = synced;
+        this.owner = owner ? new User(owner) : null;
     }
 
     getNextWateringDate() {
@@ -24,6 +26,8 @@ class Plant {
             isRare: this.isRare,
             createdAt: this.createdAt,
             description: this.description,
+            synced: this.synced,
+            owner: this.owner ? this.owner.toJSON() : null,
             nextWatering: this.getNextWateringDate(),
         }
     };
