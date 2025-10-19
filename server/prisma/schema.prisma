@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Plant {
+  id               Int      @id @default(autoincrement())
+  name             String
+  description      String?
+  wateringInterval Int
+  isRare           Boolean  @default(false)
+  lastWatered      DateTime @default(now())
+  createdAt        DateTime @default(now())
+}
